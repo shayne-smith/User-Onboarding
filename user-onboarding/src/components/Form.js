@@ -13,7 +13,7 @@ export default function Form(props) {
 
     return(
         <form className='form' onSubmit={onSubmit}>
-            <h2>New User Form</h2>
+            <h1>New User Form</h1>
             <div className='errors'>
                 <h3>{errors.name}</h3>
                 <h3>{errors.username}</h3>

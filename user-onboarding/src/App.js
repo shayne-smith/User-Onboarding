@@ -61,7 +61,6 @@ const formSchema = yup.object().shape({
     .required('A password is required'),
   termsOfService: yup
     .boolean()
-    .required('You must agree to the Terms of Service'),
 })
 
 function App() {
@@ -139,10 +138,7 @@ function App() {
     }
 
     postUser(newUser)
-    setUsers([ ...users, newUser ])
-    debugger
     setFormValues(initialFormValues)
-    debugger
   }
 
   ////////// RUN VALIDATION IF FORM VALUES CHANGE, /////////////////////
