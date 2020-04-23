@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import User from './components/User';
+import Name from './Name.js';
 import './App.css';
 
 //////////////// DEPENDENCIES //////////////////
@@ -21,7 +22,7 @@ const initialUsers = [{ // comment this out later. supposed to use an empty arra
   name: 'Victoria',
   username: 'vm11242',
   email: 'victoriamount01@gmail.com',
-  password: 'NoCatsAllowed',
+  password: 'password3',
   termsOfService: true,
 }]
 
@@ -62,6 +63,11 @@ const formSchema = yup.object().shape({
   termsOfService: yup
     .boolean()
 })
+
+//////////// Random Name Generator Testing //////////////
+const name = Name();
+console.log(name)
+
 
 function App() {
   const [users, setUsers] = useState(initialUsers) // change this to an empty array later
