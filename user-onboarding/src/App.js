@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
+import User from './components/User';
 import './App.css';
 
 //////////////// DEPENDENCIES //////////////////
@@ -8,6 +9,21 @@ import * as yup from 'yup'
 
 /////////// URL USED FOR POST REQUESTS ///////////
 const url = 'https://reqres.in/api/users';
+
+const initialUsers = [{ // comment this out later. supposed to use an empty array to initialize
+  name: 'Shayne',
+  username: 'seanmx96',
+  email: 'seanmx96@gmail.com',
+  password: 'star125',
+  termsOfService: true,
+},
+{ // comment this out later. supposed to use an empty array to initialize
+  name: 'Victoria',
+  username: 'vm11242',
+  email: 'victoriamount01@gmail.com',
+  password: 'NoCatsAllowed',
+  termsOfService: true,
+}]
 
 const initialFormValues = {
   /////// TEXT INPUTS ////////
@@ -48,7 +64,7 @@ const formSchema = yup.object().shape({
 })
 
 function App() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState(initialUsers) // change this to an empty array later
   const [formValues, setFormValues] = useState(initialFormValues)
 
   ////////////////// STATE TO KEEP TRACK OF WHETHER SUBMIT BUTTON IS DISABLED //////////////////////
@@ -122,7 +138,10 @@ function App() {
     }
 
     postUser(newUser)
+    setUsers([ ...users, newUser ])
+    debugger
     setFormValues(initialFormValues)
+    debugger
   }
 
   ////////// RUN VALIDATION IF FORM VALUES CHANGE, /////////////////////
@@ -136,7 +155,7 @@ function App() {
   ////////////////// RENDER JSX AND REACT COMPONENTS ////////////////////
   return (
     <div className='container'>
-      <h1>Shayne Smith</h1>
+      {/* <h1>User Onboarding Form</h1> */}
       <Form 
       values={formValues}
       onInputChange={onInputChange}
@@ -145,6 +164,15 @@ function App() {
       disabled={formDisabled}
       errors={formErrors}
       />
+      <div className='userContainer'>
+      {
+        users.map(user => {
+          return (
+            <User key={user.id} details={user}/>
+        )
+        })
+      }
+      </div>
     </div>
   );
 }

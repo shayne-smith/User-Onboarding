@@ -13,16 +13,16 @@ export default function Form(props) {
 
     return(
         <form className='form' onSubmit={onSubmit}>
-            <h2>User Information</h2>
+            <h2>New User Form</h2>
             <div className='errors'>
-                <div>{errors.name}</div>
-                <div>{errors.username}</div>
-                <div>{errors.email}</div>
-                <div>{errors.password}</div>
+                <h3>{errors.name}</h3>
+                <h3>{errors.username}</h3>
+                <h3>{errors.email}</h3>
+                <h3>{errors.password}</h3>
             </div>
 
             {/* ///////////// TEXT INPUTS /////////////// */}
-            <label>Name:
+            <label>Name:&nbsp;&nbsp;&nbsp;
                 <input 
                     value={values.name}
                     onChange={onInputChange}
@@ -30,7 +30,7 @@ export default function Form(props) {
                     type='text' 
                 />
             </label>
-            <label>Username:
+            <label>Username:&nbsp;&nbsp;&nbsp;
                 <input 
                     value={values.username}
                     onChange={onInputChange}
@@ -38,7 +38,7 @@ export default function Form(props) {
                     type='text' 
                 />
             </label>
-            <label>Email:
+            <label>Email:&nbsp;&nbsp;&nbsp;
                 <input 
                     value={values.email}
                     onChange={onInputChange}
@@ -46,7 +46,7 @@ export default function Form(props) {
                     type='text' 
                 />
             </label>
-            <label>Password:
+            <label>Password:&nbsp;&nbsp;&nbsp;
                 <input 
                     value={values.password}
                     onChange={onInputChange}
@@ -59,7 +59,7 @@ export default function Form(props) {
                     onChange={onCheckboxChange}
                     name='terms' 
                     type='checkbox' /> Terms of Service</label>
-            <button onClick={onSubmit} disabled={disabled}>submit</button>
+            <button onClick={onSubmit} disabled={disabled}>SUBMIT</button>
         </form>
     )
 }
