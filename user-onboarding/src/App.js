@@ -80,7 +80,6 @@ function App() {
         console.log(res)
         setUsers([...users, res.data])
         console.log(res.data)
-        debugger
       })
       .catch(err => {
         debugger
@@ -165,7 +164,7 @@ function App() {
       {
         users.map(user => {
           return (
-            <User key={user.id} details={user}/>
+            <User key={user.name} details={user}/>
         )
         })
       }
