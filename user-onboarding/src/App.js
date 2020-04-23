@@ -46,21 +46,22 @@ const initialFormErrors = {
 const formSchema = yup.object().shape({
   name: yup
     .string()
-    .required('name is required'),
+    .required('A name is required'),
   username: yup
     .string()
-    .min(3, 'username must have at least 3 characters')
-    .required('username is required'),
+    .min(3, 'Username must have at least 3 characters')
+    .required('A username is required'),
   email: yup
     .string()
-    .email('a VALID email is required')
-    .min(6, 'email must have at least 6 characters'),
+    .email('A VALID email is required')
+    .min(6, 'Email must have at least 6 characters'),
   password: yup
     .string()
-    .min(6, 'password must have at least 6 characters')
-    .required('a password is required'),
+    .min(6, 'Password must have at least 6 characters')
+    .required('A password is required'),
   termsOfService: yup
-    .boolean(),
+    .boolean()
+    .required('You must agree to the Terms of Service'),
 })
 
 function App() {
