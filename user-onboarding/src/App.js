@@ -42,6 +42,7 @@ const initialFormErrors = {
   username: '',
   email: '',
   password: '',
+  termsOfService: '',
 }
 
 const formSchema = yup.object().shape({
@@ -62,6 +63,8 @@ const formSchema = yup.object().shape({
     .required('A password is required'),
   termsOfService: yup
     .boolean()
+    .oneOf([true], 'You must accept Terms and Conditions')
+    // .isChecked('Terms of Service box must be checked')
 })
 
 //////////// Random Name Generator Testing //////////////
@@ -146,10 +149,11 @@ function App() {
     setFormValues(initialFormValues)
   }
 
-  ////////// RUN VALIDATION IF FORM VALUES CHANGE, /////////////////////
-  //////////AND USE THEM TO ENABLE/DISABLE THE SUBMIT BUTTON ////////////
+  ////////// RUN VALIDATION IF FORM VALUES CHANGE /////////////////////
+  ////////// AND USE THEM TO ENABLE/DISABLE THE SUBMIT BUTTON ////////////
   useEffect(() => {
-    formSchema.isValid(formValues).then(valid => {
+    formSchema.isValid(formValues)
+    .then(valid => {
       setFormDisabled(!valid);
     })
   }, [formValues])

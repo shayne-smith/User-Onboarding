@@ -15,10 +15,11 @@ export default function Form(props) {
         <form className='form' onSubmit={onSubmit}>
             <h1>New User Form</h1>
             <div className='errors'>
-                <h3>{errors.name}</h3>
-                <h3>{errors.username}</h3>
-                <h3>{errors.email}</h3>
-                <h3>{errors.password}</h3>
+                <h3 data-cy_name_validation='data-cy_name_validation' id='nameValidationError'>{errors.name}</h3>
+                <h3 id='usernameValidationError'>{errors.username}</h3>
+                <h3 id='emailValidationError'>{errors.email}</h3>
+                <h3 id='passwordValidationError'>{errors.password}</h3>
+                <h3 id='termsValidationError'>{errors.termsOfService}</h3>
             </div>
 
             {/* ///////////// TEXT INPUTS /////////////// */}
@@ -64,7 +65,7 @@ export default function Form(props) {
                     onChange={onCheckboxChange}
                     name='terms' 
                     type='checkbox' /> Terms of Service</label>
-            <button onClick={onSubmit} disabled={disabled}>SUBMIT</button>
+            <button data-cy_submit='cy_submit' onClick={onSubmit} disabled={disabled}>SUBMIT</button>
         </form>
     )
 }
